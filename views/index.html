@@ -1,76 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>Autour</title>
-        <link href="../node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+        <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Oswald'>
         <link rel="stylesheet" href="/stylesheets/style.css" />
     </head>
     <body>
         <!--<h1>{{ title }}</h1>
         <p>Testing {{ test }}</p>-->
-        <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                <div class="cover-container">
-                    <div class="masthead clearfix">
-                        <div class="inner">
-                        <h3 class="masthead-brand">autour</h3>
-                        <nav>
-                            <ul class="nav masthead-nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">Features</a></li>
-                            <li><a href="#">Contact</a></li>
-                            </ul>
-                        </nav>
-                        </div>
-                    </div>
-                    <div class="inner cover">
-                        <h1 class="cover-heading">GET ME OUT OF HERE!</h1>
-                        <form class="form-horizontal">
-                            <div class="form-group">
-                                <label for="origin" class="col-sm-2 control-label">Origin</label>
-                                <div class="col-sm-10">
-                                    <input class="form-control" id="origin" placeholder="ORIGIN">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="fromDate" class="col-sm-2 control-label">Departure Date</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="fromDate" placeholder="FROM">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="toDate" class="col-sm-2 control-label">Return Date</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="toDate" placeholder="TO">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="budget" class="col-sm-2 control-label">Budget</label>
-                                <div class="col-sm-10">
-                                    <input type="password" class="form-control" id="budget" placeholder="BUDGET">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">SEARCH</button>
-                                </div>
-                            </div>
-                        </form>
-                        <!--<p class="lead">
-                        <a href="#" class="btn btn-lg btn-default">SEARCH</a>
-                        </p>-->
-                    </div>
-                    <div class="mastfoot">
-                        <div class="inner">
-                            <p>Created by <a href="https://ece.uwaterloo.ca/~taamit/">Tanvir Alam Amit</a>.</p>
-                        </div>
-                    </div>
+        
+        <nav class="nav-wrapper">
+            <div class="container">
+                <a href="/" class="">autour</a>
+                <a href="#" class="navbar-right">LOGIN WITH FACEBOOK</a>
+            </div>
+        </nav>
+        
+        <div id="main" class="container vertical-center">
+            <!--<div id="form" class="col-md-offset-4 col-md-4">-->
+            <div id="form" class="col-md-4">
+                <div class="form-group">
+                    <input type="text" class="input-field" placeholder="ORIGIN">
                 </div>
+                <div class="form-group">
+                    <input type="text" class="input-field"  placeholder="DEPART">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-field" placeholder="RETURN">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="input-field" placeholder="BUDGET">
+                </div>
+                <button>SEARCH</button>
             </div>
         </div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-        <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
 </html>

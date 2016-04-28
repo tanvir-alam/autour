@@ -36,9 +36,9 @@ body {
     border-bottom: 1px solid #999;
 }
 
-.input-field::-webkit-input-placeholder {
+/*.input-field::-webkit-input-placeholder {
     color: #fff;
-}
+}*/
 
 .input-field:-moz-placeholder {
     color: #fff;
@@ -79,4 +79,8 @@ button {
     -ms-flex-pack : center;
     -webkit-justify-content : center;
     justify-content : center;
+}
+
+.dropdown-menu {
+    color: #333;
 }

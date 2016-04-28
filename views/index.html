@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Oswald'>
         <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" />
     </head>
     <body>
         <!--<h1>{{ title }}</h1>
@@ -27,10 +28,10 @@
                     <input type="text" class="input-field" placeholder="ORIGIN">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="input-field"  placeholder="DEPARTURE DATE">
+                    <input type="text" class="input-field datepicker" placeholder="DEPARTURE DATE">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="input-field" placeholder="RETURN DATE">
+                    <input type="text" class="input-field datepicker" placeholder="RETURN DATE">
                 </div>
                 <div class="form-group">
                     <input type="text" class="input-field" placeholder="BUDGET">
@@ -41,5 +42,14 @@
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
+        <script>
+            $(function() {
+                $('.datepicker').datepicker({
+                    autoclose: true,
+                    orientation: "bottom right"
+                });
+            });
+        </script>
     </body>
 </html>

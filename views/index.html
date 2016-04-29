@@ -11,8 +11,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" />
     </head>
     <body>
-        <!--<h1>{{ title }}</h1>
-        <p>Testing {{ test }}</p>-->
         
         <nav class="nav-wrapper">
             <div class="container">
@@ -21,17 +19,19 @@
             </div>
         </nav>
         
+        <h1>Give us your budget and we'll tell you where you can fly to!</h1>
+        
         <div id="main" class="container vertical-center">
             <!--<div id="form" class="col-md-offset-4 col-md-4">-->
             <div id="form" class="col-md-4">
                 <div class="form-group">
-                    <input type="text" class="input-field" placeholder="ORIGIN">
+                    <input type="text" class="input-field" placeholder="FLYING FROM">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="input-field datepicker" placeholder="DEPARTURE DATE">
+                    <input type="text" id="departDate" class="input-field datepicker" placeholder="DEPARTURE DATE">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="input-field datepicker" placeholder="RETURN DATE">
+                    <input type="text" id="returnDate" class="input-field datepicker" placeholder="RETURN DATE">
                 </div>
                 <div class="form-group">
                     <input type="text" class="input-field" placeholder="BUDGET">
@@ -45,9 +45,18 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
         <script>
             $(function() {
-                $('.datepicker').datepicker({
+                $('#departDate').datepicker({
                     autoclose: true,
+                    startDate: new Date(),
                     orientation: "bottom right"
+                }).on('changeDate', function(e) {
+                    $('#returnDate')
+                        .datepicker({ 
+                            autoclose: true,
+                            orientation: "bottom right"
+                        })
+                        .datepicker('setStartDate', e.date)
+                        .focus();
                 });
             });
         </script>

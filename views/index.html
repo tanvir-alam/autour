@@ -50,13 +50,18 @@
                     startDate: new Date(),
                     orientation: "bottom right"
                 }).on('changeDate', function(e) {
-                    $('#returnDate')
-                        .datepicker({ 
-                            autoclose: true,
-                            orientation: "bottom right"
-                        })
-                        .datepicker('setStartDate', e.date)
-                        .focus();
+                    $('#returnDate').datepicker({ 
+                        autoclose: true,
+                        orientation: "bottom right"
+                    })
+                    .datepicker('setStartDate', e.date)
+                    .focus();
+                });
+                
+                $('#returnDate').datepicker({ 
+                    autoclose: true,
+                    startDate: new Date(),
+                    orientation: "bottom right"
                 });
             });
         </script>

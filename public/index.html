@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="autour">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="/stylesheets/style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" />
     </head>
-    <body>
+    <body ng-controller="mainController">
         
         <nav class="nav-wrapper">
             <div class="container">
@@ -20,8 +20,9 @@
         </nav>
         
         <div id="main" class="container">
+            <p><a href="#search">Home</a></p>
             <div class="row">
-                <h1>Give us your budget and we'll tell you where you can fly to!</h1>
+                <h1>{{ message }}</h1>
             </div>
             <div id="form" class="col-md-offset-4 col-md-4">
                 <div class="form-group">
@@ -40,9 +41,15 @@
             </div>
         </div>
         
+        <div ng-view></div>
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
+        
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+        <script src="/app.js"></script>
         <script>
             $(function() {
                 $('#departDate').datepicker({

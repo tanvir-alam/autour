@@ -1,7 +1,9 @@
 html {
     height: 100%;
-    background: no-repeat center center fixed;
+    /*background: no-repeat center center fixed;*/
     background: url('/images/scotland.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     background-size: cover;
 }
 
@@ -11,6 +13,7 @@ body {
     font-size: 20px;
     font-family: 'Oswald', sans-serif;
     color: #fff;
+    text-align: center;
 }
 
 .nav-wrapper {
@@ -36,7 +39,7 @@ h1 {
 }
 
 #form {
-    margin-top: 20vh;
+    margin-top: 10vh;
     margin-bottom: 10vh;
 }
 
@@ -79,4 +82,8 @@ button {
 
 .dropdown-menu {
     color: #333;
+}
+
+#results {
+    background-color: rgba(0,0,0,0.5);
 }

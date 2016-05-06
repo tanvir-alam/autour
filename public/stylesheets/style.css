@@ -80,10 +80,15 @@ button {
     text-align: center;
 }
 
+select option {
+    text-align: center;
+}
+
 .dropdown-menu {
     color: #333;
 }
 
 #results {
     background-color: rgba(0,0,0,0.5);
+    margin-bottom: 5vh;
 }

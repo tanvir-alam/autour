@@ -23,7 +23,13 @@
             <div class="row">
                 <h1>{{ message }}</h1>
             </div>
-            <form id="form" autocomplete='off' class="col-md-offset-4 col-md-4" method="POST">
+            <form id="form" autocomplete='off' class="col-md-offset-4 col-md-4">
+                <!--<fieldset class="form-group">
+                    <select ng-model="info.country" id="country" class="input-field" placeholder="COUNTRY">
+                        <option value="US">UNITED STATES</option>
+                        <option value="CA">CANADA</option>
+                    </select>
+                </fieldset>-->
                 <fieldset class="form-group">
                     <input type="text" ng-model="info.origin" id="origin" class="input-field" placeholder="FLYING FROM">
                 </fieldset>
@@ -41,26 +47,26 @@
         </div>
         
         <div ng-show="results.status" id="results" class="container">
-            <h2>You can fly to these cities:</h2>
+            <h2>Cities you can fly to:</h2>
             
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Flight Fare</th>
-                        <th>City Code</th>
+                        <th>Flight Fare (USD)</th>
+                        <th>Airport</th>
                     </tr>
                 </thead>
                 <tbody ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
                     <!--<div ng-repeat="d in fareinfo | orderBy: 'LowestFare'">-->
                         <tr>
-                            <td>{{d.LowestFare}}</td>
-                            <td>{{d.DestinationLocation}}</td>
+                            <td>{{ (d.LowestFare).toFixed(2) }}</td>
+                            <td>{{ d.DestinationLocation }}</td>
                         </tr>
                     <!--</div>-->
                 </tbody>
             </table>
         </div>
-        
+        <!--{"OriginLocation":"NYC","FareInfo":[{"CurrencyCode":"USD","LowestNonStopFare":136.2,"LowestFare":136.2,"DestinationLocation":"BUF","DepartureDateTime":"2015-05-25T00:00:00","ReturnDateTime":"2015-05-30T00:00:00","Links":[{"rel":"shop","href":"https://api.test.sabre.com/v1/shop/flights?origin=NYC&destination=BUF&departuredate=2015-05-25&returndate=2015-05-30&pointofsalecountry=US"}]}]-->
         <!--<div ng-view></div>-->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

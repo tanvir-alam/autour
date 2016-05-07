@@ -5,12 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <title>Autour</title>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Oswald'>
         <link rel="stylesheet" href="/stylesheets/style.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/css/bootstrap-datepicker.css" />
     </head>
-    <body ng-controller="mainController">
+    <body ng-controller="mainController as ctrl">
         
         <nav class="nav-wrapper">
             <div class="container">
@@ -19,30 +20,55 @@
             </div>
         </nav>
         
-        <div id="main" class="container">
+        <div id="main" class="container" ng-cloak>
             <div class="row">
-                <h1>{{ message }}</h1>
+                <h1>{{ header }}</h1>
             </div>
-            <form id="form" autocomplete='off' class="col-md-offset-4 col-md-4">
-                <!--<fieldset class="form-group">
-                    <select ng-model="info.country" id="country" class="input-field" placeholder="COUNTRY">
-                        <option value="US">UNITED STATES</option>
-                        <option value="CA">CANADA</option>
-                    </select>
-                </fieldset>-->
+            <form id="form" ng-submit="$event.preventDefault()" autocomplete='off' class="col-md-offset-4 col-md-4">
                 <fieldset class="form-group">
-                    <input type="text" ng-model="info.origin" id="origin" class="input-field" placeholder="FLYING FROM">
+                    <md-autocomplete flex required 
+                        md-input-name="origin" 
+                        md-input-minlength="3" 
+                        md-input-maxlength="18" 
+                        md-no-cache="ctrl.noCache" 
+                        md-selected-item="ctrl.selectedItem" 
+                        md-search-text="ctrl.searchText" 
+                        md-items="item in ctrl.querySearch(ctrl.searchText)" 
+                        md-selected-item-change="ctrl.selectedItemChange(item)"
+                        md-item-text="item.name + ' (' + item.code + ')'" 
+                        md-floating-label="FLYING FROM"
+                        ng-model="info.origin">
+                        
+                        <md-item-template>
+                            <span md-highlight-text="ctrl.searchText">{{ item.name }} ({{ item.code }})</span>
+                        </md-item-template>
+                        <!--<div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
+                            <div ng-message="required">You <b>must</b> have a favorite state.</div>
+                            <div ng-message="minlength">Your entry is not long enough.</div>
+                            <div ng-message="maxlength">Your entry is too long.</div>
+                        </div>
+                        -->
+                    </md-autocomplete>
                 </fieldset>
                 <fieldset class="form-group">
-                    <input type="text" ng-model="info.departuredate" id="departDate" class="input-field datepicker" placeholder="DEPARTURE DATE">
+                    <md-input-container flex>
+                        <label>DEPARTURE DATE</label>
+                        <input type="text" ng-model="info.departuredate" id="departDate" class="input-field datepicker">
+                    </md-input-container>
                 </fieldset>
                 <fieldset class="form-group">
-                    <input type="text" ng-model="info.returndate" id="returnDate" class="input-field datepicker" placeholder="RETURN DATE">
+                    <md-input-container flex>
+                        <label>RETURN DATE</label>
+                        <input type="text" ng-model="info.returndate" id="returnDate" class="input-field datepicker">
+                    </md-input-container>
                 </fieldset>
                 <fieldset class="form-group">
-                    <input type="text" ng-model="info.maxfare" id="budget" class="input-field" placeholder="BUDGET">
+                    <md-input-container flex>
+                        <label>BUDGET (USD)</label>
+                        <input ng-model="info.maxfare" id="budget" class="input-field">
+                    </md-input-container>
                 </fieldset>
-                <button ng-click="submit()">SEARCH</button>
+                <button ng-click="submit()" id="searchBtn">SEARCH</button>
             </form>
         </div>
         
@@ -57,12 +83,10 @@
                     </tr>
                 </thead>
                 <tbody ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
-                    <!--<div ng-repeat="d in fareinfo | orderBy: 'LowestFare'">-->
                         <tr>
                             <td>{{ (d.LowestFare).toFixed(2) }}</td>
                             <td>{{ d.DestinationLocation }}</td>
                         </tr>
-                    <!--</div>-->
                 </tbody>
             </table>
         </div>
@@ -73,8 +97,12 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.0/js/bootstrap-datepicker.js"></script>
         
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-route.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
         <script src="/app.js"></script>
         <script>
             $(function() {

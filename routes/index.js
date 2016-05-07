@@ -47,10 +47,11 @@ router.get('/fares', function(req, res) {
 
 router.get('/search', function(req, res) {
     var options = {
-        origin          : req.query.origin,
-        departuredate   : req.query.departuredate,
-        returndate      : req.query.returndate,
-        maxfare         : req.query.maxfare
+        origin              : req.query.origin,
+        departuredate       : req.query.departuredate,
+        returndate          : req.query.returndate,
+        maxfare             : req.query.maxfare,
+        pointofsalecountry  : req.query.pointofsalecountry
     };
     sabre.destination_finder(options, function(error, data) {
         response(res, error, data);

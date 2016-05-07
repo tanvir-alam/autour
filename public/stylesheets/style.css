@@ -41,6 +41,12 @@ h1 {
 #form {
     margin-top: 10vh;
     margin-bottom: 10vh;
+    background-color: rgba(0,0,0,0.5);
+    padding: 25px;
+}
+
+.form-group {
+    margin-bottom: 0;
 }
 
 .input-field {
@@ -52,6 +58,24 @@ h1 {
     border-bottom: 1px solid #999;
 }
 
+md-input-container {
+    padding-bottom: 0 !important;
+    width: 100%;
+    font-family: 'Oswald', sans-serif;
+    text-align: center;
+}
+
+md-input-container label,   
+md-input-container .md-placeholder {
+    color: #999 !important;
+    text-align: center;
+}
+
+md-input-container .md-input {
+    text-align: center;
+    color: rgba(255,255,255,0.87);
+    border-color: #999;
+}
 /*.input-field::-webkit-input-placeholder {
     color: #fff;
 }*/
@@ -92,3 +116,4 @@ select option {
     background-color: rgba(0,0,0,0.5);
     margin-bottom: 5vh;
 }
+

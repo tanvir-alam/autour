@@ -18,6 +18,10 @@ app.controller('mainController', function($scope, $http) {
     self.searchText = null;
     self.querySearch = querySearch;
     
+    function selectedItemChange(item) {
+        self.selectedItem = item;
+    }
+    
     function querySearch(query) {
         var results = query ? $scope.cities.filter( createFilterFor(query) ) : [];
         return results;
@@ -31,7 +35,8 @@ app.controller('mainController', function($scope, $http) {
     }
     
     $scope.submit = function() {
-        console.log(self.selectedItem.countryCode);
+        console.log(self.selectedItem.code);
+        $scope.results = null;
         $http.get('/search?origin=' + self.selectedItem.code +
             '&departuredate=' + $scope.info.departuredate +
             '&returndate=' + $scope.info.returndate +

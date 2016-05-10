@@ -92,6 +92,16 @@ md-input-container .md-input {
     color: #fff;
 }
 
+.datepicker {
+    cursor: pointer;
+}
+
+.glyphicon-calendar {
+    z-index: -1;
+    position: absolute;
+    right: 5px;
+}
+
 button {
     display: block;
     width: 100%;
@@ -116,4 +126,3 @@ select option {
     background-color: rgba(0,0,0,0.5);
     margin-bottom: 5vh;
 }
-

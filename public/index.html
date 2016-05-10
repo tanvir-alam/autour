@@ -52,14 +52,15 @@
                 </fieldset>
                 <fieldset class="form-group">
                     <md-input-container flex>
-                        <label>DEPARTURE DATE</label>
+                        <label>DEPARTURE DATE</label><span class="glyphicon glyphicon-calendar"></span>
                         <input type="text" ng-model="info.departuredate" id="departDate" class="input-field datepicker">
                     </md-input-container>
                 </fieldset>
                 <fieldset class="form-group">
                     <md-input-container flex>
-                        <label>RETURN DATE</label>
+                        <label>RETURN DATE</label><span class="glyphicon glyphicon-calendar"></span>
                         <input type="text" ng-model="info.returndate" id="returnDate" class="input-field datepicker">
+                        <!--<span class="glyphicon glyphicon-calendar"></span>-->
                     </md-input-container>
                 </fieldset>
                 <fieldset class="form-group">
@@ -72,20 +73,20 @@
             </form>
         </div>
         
-        <div ng-show="results.status" id="results" class="container">
+        <div data-my-results="showResults" ng-show="results.status" id="results" class="container">
             <h2>Cities you can fly to:</h2>
             
             <table class="table">
                 <thead>
                     <tr>
+                        <th>Destination</th>
                         <th>Flight Fare (USD)</th>
-                        <th>Airport</th>
                     </tr>
                 </thead>
-                <tbody ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
-                        <tr>
-                            <td>{{ (d.LowestFare).toFixed(2) }}</td>
+                <tbody>
+                        <tr ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
                             <td>{{ d.DestinationLocation }}</td>
+                            <td>{{ (d.LowestFare).toFixed(2) }}</td>
                         </tr>
                 </tbody>
             </table>

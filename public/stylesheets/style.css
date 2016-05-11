@@ -126,3 +126,7 @@ select option {
     background-color: rgba(0,0,0,0.5);
     margin-bottom: 5vh;
 }
+
+table.table th {
+    text-align: center;
+}

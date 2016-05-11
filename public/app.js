@@ -57,6 +57,17 @@ app.controller('mainController', function($scope, $http) {
     };
 });
 
+app.directive('ngClick', function() {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            element.on('click', function() {
+                $('html,body').animate({scrollTop: $('#results').offset().top}, 1000);
+            });
+        }
+    }; 
+});
+
 app.controller('searchController', function($scope) {
 
     // create a message to display in our view

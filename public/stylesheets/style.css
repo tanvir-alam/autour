@@ -130,3 +130,7 @@ select option {
 table.table th {
     text-align: center;
 }
+
+.table>tbody>tr>td {
+    border-color: #999;
+}

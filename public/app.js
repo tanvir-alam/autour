@@ -57,7 +57,7 @@ app.controller('mainController', function($scope, $http) {
     };
 });
 
-app.directive('ngClick', function() {
+app.directive('getResults', function() {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {

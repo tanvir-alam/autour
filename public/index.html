@@ -73,23 +73,25 @@
             </form>
         </div>
         
-        <div ng-show="results.status" id="results" class="container">
-            <h2>Cities you can fly to:</h2>
-            
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Destination</th>
-                        <th>Flight Fare (USD)</th>
-                    </tr>
-                </thead>
-                <tbody>
-                        <tr ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
-                            <td>{{ d.DestinationLocation }}</td>
-                            <td>{{ (d.LowestFare).toFixed(2) }}</td>
+        <div id="results" class="container">
+            <div ng-show="results.status">
+                <h2>Cities you can fly to:</h2>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Destination</th>
+                            <th>Flight Fare (USD)</th>
                         </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                            <tr ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
+                                <td>{{ d.DestinationLocation }}</td>
+                                <td>{{ (d.LowestFare).toFixed(2) }}</td>
+                            </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!--{"OriginLocation":"NYC","FareInfo":[{"CurrencyCode":"USD","LowestNonStopFare":136.2,"LowestFare":136.2,"DestinationLocation":"BUF","DepartureDateTime":"2015-05-25T00:00:00","ReturnDateTime":"2015-05-30T00:00:00","Links":[{"rel":"shop","href":"https://api.test.sabre.com/v1/shop/flights?origin=NYC&destination=BUF&departuredate=2015-05-25&returndate=2015-05-30&pointofsalecountry=US"}]}]-->
         <!--<div ng-view></div>-->

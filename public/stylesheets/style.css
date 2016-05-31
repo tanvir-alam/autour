@@ -127,6 +127,11 @@ select option {
     margin-bottom: 5vh;
 }
 
+#results .currency {
+    padding-right: 4px;
+    color: #999;
+}
+
 table.table th {
     text-align: center;
 }

@@ -14,6 +14,12 @@ app.controller('mainController', function($scope, $http) {
         $scope.error = error;
     });
     
+    $http.get('/airports').success(function(data) {
+        $scope.airports = (JSON.parse(data.info)).Airports;
+    }).error(function(error) {
+        $scope.error = error;
+    });
+    
     self.selectedItem = null;
     self.searchText = null;
     self.querySearch = querySearch;
@@ -23,30 +29,31 @@ app.controller('mainController', function($scope, $http) {
     }
     
     function querySearch(query) {
-        var results = query ? $scope.cities.filter( createFilterFor(query) ) : [];
+        var results = query ? $scope.airports.filter( createFilterFor(query) ) : [];
         return results;
     };
     
     function createFilterFor(query) {
         var lowercaseQuery = angular.lowercase(query);
-        return function filterFn(city) {
-            return (angular.lowercase(city.name).indexOf(lowercaseQuery) === 0);
+        return function filterFn(airport) {
+            return ( (angular.lowercase(airport.CityName).indexOf(lowercaseQuery) === 0) || (angular.lowercase(airport.AirportCode).indexOf(lowercaseQuery) === 0) );
         };
     }
     
     $scope.submit = function() {
-        console.log(self.selectedItem.code);
+        console.log(self.selectedItem.AirportCode);
         $scope.results = null;
-        $http.get('/search?origin=' + self.selectedItem.code +
+        $http.get('/search?origin=' + self.selectedItem.AirportCode +
             '&departuredate=' + $scope.info.departuredate +
             '&returndate=' + $scope.info.returndate +
             '&maxfare=' + $scope.info.maxfare +
-            '&pointofsalecountry=' + self.selectedItem.countryCode)
+            '&pointofsalecountry=' + self.selectedItem.CountryCode)
         .success(function(data) {
             $scope.results = data;
             $scope.data = data.info;
             if ($scope.results.status) {
                 $scope.fareinfo = JSON.parse($scope.data).FareInfo;
+                // $scope.fareinfo = ($scope.data).FareInfo;
             } else {
                 $scope.error = JSON.parse($scope.data.data).message;
             }

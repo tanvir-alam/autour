@@ -24,12 +24,12 @@
             <div class="row">
                 <h1>{{ header }}</h1>
             </div>
-            <form id="form" ng-submit="$event.preventDefault()" autocomplete='off' class="col-md-offset-4 col-md-4">
+            <form id="form" name="searchForm" ng-submit="$event.preventDefault()" autocomplete='off' class="col-md-offset-4 col-md-4">
                 <fieldset class="form-group">
                     <md-autocomplete flex required 
                         md-input-name="origin" 
                         md-input-minlength="3" 
-                        md-input-maxlength="18" 
+                        md-input-maxlength="30" 
                         md-no-cache="ctrl.noCache" 
                         md-selected-item="ctrl.selectedItem" 
                         md-search-text="ctrl.searchText" 
@@ -42,34 +42,31 @@
                         <md-item-template>
                             <span md-highlight-text="ctrl.searchText">{{ item.CityName }} - {{ item.AirportName }} ({{ item.AirportCode }})</span>
                         </md-item-template>
-                        <!--<div ng-messages="searchForm.autocompleteField.$error" ng-if="searchForm.autocompleteField.$touched">
-                            <div ng-message="required">You <b>must</b> have a favorite state.</div>
-                            <div ng-message="minlength">Your entry is not long enough.</div>
-                            <div ng-message="maxlength">Your entry is too long.</div>
+                        <div ng-messages="searchForm.origin.$error" ng-if="searchForm.origin.$touched" role="alert">
+                            <div ng-message="required">Please select an Airport.</div>
                         </div>
-                        -->
+                        
                     </md-autocomplete>
                 </fieldset>
                 <fieldset class="form-group">
-                    <md-input-container flex>
+                    <md-input-container flex required>
                         <label>DEPARTURE DATE</label><span class="glyphicon glyphicon-calendar"></span>
-                        <input type="text" ng-model="info.departuredate" id="departDate" class="input-field datepicker">
+                        <input type="text" ng-model="info.departuredate" id="departDate" class="input-field datepicker" required>
                     </md-input-container>
                 </fieldset>
                 <fieldset class="form-group">
-                    <md-input-container flex>
+                    <md-input-container flex required>
                         <label>RETURN DATE</label><span class="glyphicon glyphicon-calendar"></span>
-                        <input type="text" ng-model="info.returndate" id="returnDate" class="input-field datepicker">
-                        <!--<span class="glyphicon glyphicon-calendar"></span>-->
+                        <input type="text" ng-model="info.returndate" id="returnDate" class="input-field datepicker" required>
                     </md-input-container>
                 </fieldset>
                 <fieldset class="form-group">
-                    <md-input-container flex>
-                        <label>BUDGET (USD)</label>
-                        <input ng-model="info.maxfare" id="budget" class="input-field">
+                    <md-input-container flex required>
+                        <label>BUDGET</label>
+                        <input ng-model="info.maxfare" id="budget" type="number" class="input-field" required>
                     </md-input-container>
                 </fieldset>
-                <button get-results ng-click="submit()" id="searchBtn">SEARCH</button>
+                <button get-results ng-click="submit($event)" id="searchBtn">SEARCH</button>
             </form>
         </div>
         
@@ -96,8 +93,6 @@
                 </table>
             </div>
         </div>
-        <!--{"OriginLocation":"NYC","FareInfo":[{"CurrencyCode":"USD","LowestNonStopFare":136.2,"LowestFare":136.2,"DestinationLocation":"BUF","DepartureDateTime":"2015-05-25T00:00:00","ReturnDateTime":"2015-05-30T00:00:00","Links":[{"rel":"shop","href":"https://api.test.sabre.com/v1/shop/flights?origin=NYC&destination=BUF&departuredate=2015-05-25&returndate=2015-05-30&pointofsalecountry=US"}]}]-->
-        <!--<div ng-view></div>-->
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>

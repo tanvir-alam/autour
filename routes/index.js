@@ -61,8 +61,8 @@ router.get('/search', function(req, res) {
         pointofsalecountry  : req.query.pointofsalecountry
     };
     sabre.destination_finder(options, function(error, data) {
-        console.log(JSON.parse(data).OriginLocation);
-        console.log((JSON.parse(data)).FareInfo);
+        // console.log(JSON.parse(data).OriginLocation);
+        // console.log((JSON.parse(data)).FareInfo);
         response(res, error, JSON.parse(data));
     });
 });
@@ -109,8 +109,8 @@ function populateAirports(res, cityPairs) {
             });
         }
     }
-    console.log(arr1.length);
-    console.log(arr2.length);
+    // console.log(arr1.length);
+    // console.log(arr2.length);
     res.status(200).send(arr2);
 }
 

@@ -13,6 +13,7 @@
     "ejs": "^2.4.1",
     "express": "~4.13.1",
     "hogan-express": "^0.5.2",
+    "json-query": "^2.2.0",
     "morgan": "~1.6.1",
     "sabre-dev-studio": "^1.1.0",
     "serve-favicon": "~2.3.0"

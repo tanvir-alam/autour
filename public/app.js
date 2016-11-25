@@ -9,13 +9,13 @@ app.controller('mainController', function($scope, $http, $mdDialog) {
     $scope.header = "Give us your budget and we'll tell you where you can fly to!";
     
     $http.get('/cities').success(function(data) {
-        $scope.cities = (JSON.parse(data.info)).Cities;
+        $scope.cities = (data.info).Cities;
     }).error(function(error) {
         $scope.error = error;
     });
     
     $http.get('/airports').success(function(data) {
-        $scope.airports = (JSON.parse(data.info)).Airports;
+        $scope.airports = (data.info).Airports;
     }).error(function(error) {
         $scope.error = error;
     });
@@ -68,10 +68,10 @@ app.controller('mainController', function($scope, $http, $mdDialog) {
             $scope.results = data;
             $scope.data = data.info;
             if ($scope.results.status) {
-                $scope.fareinfo = JSON.parse($scope.data).FareInfo;
+                $scope.fareinfo = $scope.data.FareInfo;
                 // $scope.fareinfo = ($scope.data).FareInfo;
             } else {
-                $scope.error = JSON.parse($scope.data.data).message;
+                $scope.error = $scope.data.data.message;
             }
         }
         else {
@@ -100,10 +100,10 @@ app.controller('mainController', function($scope, $http, $mdDialog) {
                         $scope.results = response.data;
                         $scope.data = response.data.info;
                         if ($scope.results.status) {
-                            $scope.fareinfo = JSON.parse($scope.data).FareInfo;
+                            $scope.fareinfo = $scope.data.FareInfo;
                             // $scope.fareinfo = ($scope.data).FareInfo;
                         } else {
-                            $scope.error = JSON.parse($scope.data.data).message;
+                            $scope.error = $scope.data.data.message;
                         }
                     }
                     else {

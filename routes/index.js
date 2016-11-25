@@ -18,7 +18,7 @@ function response(res, error, data) {
     res.status(200).send({
         'status': true,
         'message': 'Success',
-        'info': JSON.stringify(data)
+        'info': data
     });
   }
 };

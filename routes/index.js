@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var jsonQuery = require('json-query')
 
 var sabreDevStudioFlight = require('sabre-dev-studio/lib/sabre-dev-studio-flight');
 var sabreConfig = require('../config/sabre_config');
@@ -20,6 +21,38 @@ function response(res, error, data) {
         'message': 'Success',
         'info': data
     });
+  }
+};
+
+function response2(res, error, data) {
+  if (error) {
+    res.status(200).send({
+        'status': false,
+        'message': 'Error',
+        'info': error
+    });
+  } else {
+      // create a new JSON object and insert every element from data and include airport/city name
+      var destinations = [];
+      for(var i = 0; i < data.FareInfo.length; i++) {
+        //  destinations.push(data.FareInfo[i]);
+        var airportName = jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].AirportName', {data: airports}).value;
+        destinations[i] = {
+             CurrencyCode: data.FareInfo[i].CurrencyCode,
+             LowestFare: data.FareInfo[i].LowestFare,
+             AirportCode: data.FareInfo[i].DestinationLocation
+        };
+      }
+      var result = { 
+          OriginLocation: data.OriginLocation, 
+          FareInfo: destinations
+        };
+      console.log(result);
+      res.status(200).send({
+          'status': true,
+          'message': 'Success',
+          'info': result
+      });
   }
 };
 
@@ -63,7 +96,7 @@ router.get('/search', function(req, res) {
     sabre.destination_finder(options, function(error, data) {
         // console.log(JSON.parse(data).OriginLocation);
         // console.log((JSON.parse(data)).FareInfo);
-        response(res, error, JSON.parse(data));
+        response2(res, error, JSON.parse(data));
     });
 });
 

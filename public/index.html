@@ -77,16 +77,19 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Destination</th>
                             <th>Flight Fare</th>
+                            <th>Destination</th>
                         </tr>
                     </thead>
                     <tbody>
                             <tr ng-repeat="d in fareinfo | orderBy: 'LowestFare'">
-                                <td>{{ d.AirportCode }}</td>
                                 <td>
                                     <span class="currency">{{ d.CurrencyCode }}</span>
                                     <span>{{ (d.LowestFare).toFixed(2) }}</span>
+                                </td>
+                                <td class="destination">
+                                    <span>{{ d.CityName }}</span>
+                                    <span class="airport">{{ d.AirportName }} ({{ d.AirportCode }})</span>
                                 </td>
                             </tr>
                     </tbody>

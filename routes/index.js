@@ -35,12 +35,12 @@ function response2(res, error, data) {
       // create a new JSON object and insert every element from data and include airport/city name
       var destinations = [];
       for(var i = 0; i < data.FareInfo.length; i++) {
-        //  destinations.push(data.FareInfo[i]);
-        var airportName = jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].AirportName', {data: airports}).value;
         destinations[i] = {
              CurrencyCode: data.FareInfo[i].CurrencyCode,
              LowestFare: data.FareInfo[i].LowestFare,
-             AirportCode: data.FareInfo[i].DestinationLocation
+             AirportCode: data.FareInfo[i].DestinationLocation,
+             AirportName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].AirportName', {data: airports}).value,
+             CityName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].CityName', {data: airports}).value
         };
       }
       var result = { 

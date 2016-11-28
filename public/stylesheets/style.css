@@ -136,10 +136,23 @@ select option {
     color: #999;
 }
 
+#results .airport {
+    padding-left: 4px;
+    color: #999;
+}
+
+table.table {
+    font-family: "Century Gothic", CenturyGothic, AppleGothic, sans-serif;
+}
+
 table.table th {
     text-align: center;
 }
 
 .table>tbody>tr>td {
     border-color: #999;
+}
+
+.table>tbody>tr>td.destination {
+    text-align: left;
 }

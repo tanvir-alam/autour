@@ -910,6 +910,13 @@
 		"CountryName": "Italy",
 		"RegionName": "Europe"
 	}, {
+		"AirportCode": "VRA",
+		"AirportName": "Juan Gualberto Gomez",
+		"CityName": "Varadero",
+		"CountryCode": "CU",
+		"CountryName": "Cuba",
+		"RegionName": "North America"
+	}, {
 		"AirportCode": "VLC",
 		"AirportName": "Valencia",
 		"CityName": "Valencia",

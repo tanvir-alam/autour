@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var jsonQuery = require('json-query')
+var jsonQuery = require('json-query');
 
 var sabreDevStudioFlight = require('sabre-dev-studio/lib/sabre-dev-studio-flight');
 var sabreConfig = require('../config/sabre_config');

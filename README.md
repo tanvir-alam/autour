@@ -43,6 +43,9 @@ In general cases, the server can be started using:
 node bin/www
 ```
 
+Once the server is started, site can be accessed on a browser at [http://localhost:9000/] (http://localhost:9000/).
+
+
 ## Folder structure
 
 ```

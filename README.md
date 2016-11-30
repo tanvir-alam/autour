@@ -28,6 +28,9 @@ Test development for Autour, a "get-me-out-of-here" travel app that finds destin
   npm install
   ```
 
+3. Replace the tokenized configuration in `config/sabre_config.js` with Sabre credentials (ask Tanvir).
+
+
 ## Starting local server
 
 During development, Nodemon is extremely useful it automatically detects changes in code and restarts the server. To start the server using Nodemon, navigate to the directory where the repository is cloned and use the command:

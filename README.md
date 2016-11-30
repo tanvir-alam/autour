@@ -33,7 +33,7 @@ Test development for Autour, a "get-me-out-of-here" travel app that finds destin
 
 ## Starting local server
 
-During development, Nodemon is extremely useful it automatically detects changes in code and restarts the server. To start the server using Nodemon, navigate to the directory where the repository is cloned and use the command:
+During development, **Nodemon** is extremely useful because it automatically detects changes in code and restarts the server. To start the server using Nodemon, navigate to the directory where the repository is cloned and use the command:
 ```
 nodemon bin/www
 ```

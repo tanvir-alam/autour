@@ -60,7 +60,8 @@ function getDestinationInfo(data) {
             LowestFare: data.FareInfo[i].LowestFare,
             AirportCode: data.FareInfo[i].DestinationLocation,
             AirportName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].AirportName', {data: airports}).value,
-            CityName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].CityName', {data: airports}).value
+            CityName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].CityName', {data: airports}).value,
+            CountryName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].CountryName', {data: airports}).value
     };
     }
     var result = { 

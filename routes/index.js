@@ -34,7 +34,7 @@ router.get('/cities', function(req, res) {
 });
 
 router.get('/airports', function(req, res) {
-    response(res, false, airports)
+    response(res, false, airports);
 })
 
 router.get('/search', function(req, res) {
@@ -46,7 +46,19 @@ router.get('/search', function(req, res) {
         pointofsalecountry  : req.query.pointofsalecountry
     };
     sabre.destination_finder(options, function(error, data) {
-        response(res, error, getDestinationInfo(JSON.parse(data)));
+        if (error) {
+            response(res, error, null);
+        }
+        else if (data == null || typeof(data) == 'undefined') {
+            var emptyDataError = {
+                'status': 404,
+                'description': 'Data returned from Sabre was empty'
+            };
+            response(res, emptyDataError, null);
+        }
+        else {
+            response(res, null, getDestinationInfo(JSON.parse(data)));
+        }
     });
 });
 
@@ -55,14 +67,14 @@ router.get('/search', function(req, res) {
 function getDestinationInfo(data) {
     var destinations = [];
     for(var i = 0; i < data.FareInfo.length; i++) {
-    destinations[i] = {
+        destinations[i] = {
             CurrencyCode: data.FareInfo[i].CurrencyCode,
             LowestFare: data.FareInfo[i].LowestFare,
             AirportCode: data.FareInfo[i].DestinationLocation,
             AirportName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].AirportName', {data: airports}).value,
             CityName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].CityName', {data: airports}).value,
             CountryName: jsonQuery('Airports[AirportCode=' + data.FareInfo[i].DestinationLocation + '].CountryName', {data: airports}).value
-    };
+        };
     }
     var result = { 
         OriginLocation: data.OriginLocation, 

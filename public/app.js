@@ -79,9 +79,16 @@ app.controller('mainController', function($scope, $http, $mdDialog) {
         }
     }
     
-    function showError(error) {
-        console.log("Error:\n" + error);
-        $scope.error = JSON.parse(error.data).message;
+    function showError(ev) {
+        $mdDialog.show(
+            $mdDialog.alert()
+                .parent(angular.element(document.querySelector('#main')))
+                .clickOutsideToClose(true)
+                .title('No results found!')
+                .textContent('Please change your search query and try again.')
+                .ok('OK')
+                .targetEvent(ev)
+        );
     }
     
     $scope.submit = function(ev) {
@@ -101,37 +108,20 @@ app.controller('mainController', function($scope, $http, $mdDialog) {
                         $scope.data = response.data.info;
                         if ($scope.results.status) {
                             $scope.fareinfo = $scope.data.FareInfo;
-                            // $scope.fareinfo = ($scope.data).FareInfo;
                         } else {
-                            $scope.error = $scope.data.data.message;
+                            $scope.error = $scope.data.message;
+                            showError(ev);
                         }
                     }
                     else {
                         console.log("Empty response!");
-                        $mdDialog.show(
-                            $mdDialog.alert()
-                                .parent(angular.element(document.querySelector('#main')))
-                                .clickOutsideToClose(true)
-                                .title('No results found!')
-                                .textContent('Please change your search query and try again.')
-                                .ok('OK')
-                                .targetEvent(ev)
-                        );
+                        showError(ev);
                     }
                 },
                 // errorCallback
                 function(responseError) {
                     console.log("Error:\n" + responseError);
-                    $mdDialog.show(
-                        $mdDialog.alert()
-                            .parent(angular.element(document.querySelector('#main')))
-                            .clickOutsideToClose(true)
-                            .title('No results found!')
-                            .textContent('Please change your search query and try again.')
-                            // .ariaLabel('Alert Dialog Demo')
-                            .ok('OK')
-                            .targetEvent(ev)
-                    );
+                    showError(ev);
                 }
             );
         }

@@ -1,5 +1,5 @@
 module.exports = {
-  client_id:     '@sabre_client_id@',
-  client_secret: '@sabre_client_secret@',
-  uri:           '@sabre_uri@'
+  client_id:     process.env.SABRE_CLIENT_ID,
+  client_secret: process.env.SABRE_CLIENT_SECRET,
+  uri:           process.env.SABRE_URI
 }
